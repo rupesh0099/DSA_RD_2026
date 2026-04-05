@@ -20,12 +20,13 @@ int main() {
     printf("Enter a string: ");
     scanf("%s", name);
 
-
+    
     int consonant= 0, vowel= 0;
-
-
+    
+    
     for (int i = 0; name[i] != '\0'; i++) {
-        if (name[i] == 'a' || name[i] == 'e' || name[i] == 'i' || name[i] == 'o' || name[i] == 'u') 
+        char str = tolower(name[i]);
+        if (str == 'a' || str == 'e' || str == 'i' || str == 'o' || str == 'u') 
         {
            vowel++;
         }else {
