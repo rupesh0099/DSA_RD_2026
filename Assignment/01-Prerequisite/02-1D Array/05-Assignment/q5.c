@@ -1,4 +1,4 @@
-#include<stdio.h>
+ #include<stdio.h>
 #include<stdlib.h>
 
 int main(){
@@ -9,9 +9,9 @@ int main(){
     printf("Enter the size of element:\n");
     scanf("%d", &size);
 
-    if (size <= 0)
+    if (size <= 1)
     {
-        printf("Array size cannot be Zero..!");
+        printf("Array size must be greater than 1!");
         return 0;
     }
 
@@ -22,7 +22,7 @@ int main(){
         return 0;
     }
     
-    printf("\nEnter the array elements Array:\n");
+    printf("\nEnter the array elements:\n");
     for (int i = 0; i < size; i++)
     {
         scanf("%d", &ptr[i]);
@@ -32,19 +32,34 @@ int main(){
     {
         for (int j = i+1; j < size; j++)
         {
-            if(ptr[i]>ptr[j])
+            if(ptr[i] > ptr[j])
             {
-                int temp=ptr[i];
-                ptr[i]=ptr[j];
-                ptr[j]=temp;
+                int temp = ptr[i];
+                ptr[i] = ptr[j];
+                ptr[j] = temp;
             }
         }
     }
 
-    printf("Second Largest Element is:%d",ptr[size-2]);
+    int largest = ptr[size-1];
+    int slag = -1;
+
+    for (int i = size-2; i >= 0; i--)
+    {
+        if(ptr[i] != largest)
+        {
+            slag = ptr[i];
+            break;
+        }
+    }
+
+    if(slag == -1)
+        printf("No second largest element (all elements same)");
+    else
+        printf("Second Largest Element is: %d", slag);
 
     free(ptr);
-    ptr=NULL;
-    
+    ptr = NULL;
+
     return 0;
 }

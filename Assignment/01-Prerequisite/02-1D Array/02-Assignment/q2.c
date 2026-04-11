@@ -6,48 +6,62 @@ int main()
     int *ptr = NULL;
     int size = 0;
 
-    printf("\nEnter the size of an array:\n");
+    printf("Enter the size of array:\n");
     scanf("%d", &size);
 
     if (size <= 0)
     {
-        printf("Array size cannot be Zero..!");
+        printf("Invalid size!\n");
         return 0;
     }
 
     ptr = (int *)malloc(sizeof(int) * size);
-
-    if(ptr == NULL){
-        printf("Memory Allocation Failed..!");
+    if (ptr == NULL)
+    {
+        printf("Memory Allocation Failed!\n");
         return 0;
     }
 
-    printf("\nEnter the array elements:\n");
-    for (int i = 0; i < size; i++)
-    {
-        scanf("%d", &ptr[i]);
-    }
+    printf("Enter %d unique elements:\n", size);
 
     for (int i = 0; i < size; i++)
     {
-        int count = 0;
-        for (int j = 0; j < size; j++)
+        int value, flag;
+
+        while (1)
         {
-            if (ptr[i] == ptr[j])
+            flag = 0;
+            scanf("%d", &value);
+
+            for (int j = 0; j < i; j++)
             {
-                if(i>j){
+                if (ptr[j] == value)
+                {
+                    flag = 1;
                     break;
                 }
-                count++;
             }
-        }
-        if(count==1){
-            printf("\nUnique Elements is %d\n",ptr[i],count);
+
+            if (flag)
+            {
+                printf("Duplicate not allowed! Enter again:\n");
+            }
+            else
+            {
+                ptr[i] = value;
+                break;
+            }
         }
     }
 
-  free(ptr);
-  ptr=NULL;
+    printf("\nUnique array elements are:\n");
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", ptr[i]);
+    }
+
+    free(ptr);
+    ptr = NULL;
 
     return 0;
 }
