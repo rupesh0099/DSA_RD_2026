@@ -40,7 +40,7 @@ sll* create() {
     printf("\nEnter Roll no: ");
     scanf("%d",&nw->no);
     printf("\nEnter Name: ");
-    scanf(" %[^\n]s",&nw->name);
+    scanf(" %[^\n]",nw->name);
     
     nw->nxt = create();  
     return nw;

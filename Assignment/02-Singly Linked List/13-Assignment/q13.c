@@ -50,6 +50,11 @@ node*create(){
  node* delperNode(node*head){
     node*q=NULL,*p;
     int key=0,flag=0;
+
+    if(head == NULL){
+        printf("\nList is already empty!\n");
+        return NULL;
+    }
     printf("Enter the key:\n");
     scanf("%d",&key);
     for(p=head;p!=NULL;q=p,p=p->next){

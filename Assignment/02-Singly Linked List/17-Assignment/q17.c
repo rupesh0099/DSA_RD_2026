@@ -20,6 +20,7 @@ typedef struct singlyLinked{
 
 sll* create(sll*);
 void reverse(sll*);
+void freeList(sll*);
 
 int main(){
     sll* head=NULL;
@@ -63,4 +64,18 @@ void reverse(sll*head){
 }
    reverse(head->nxt); 
   printf("\n%d\n%s",head->no, head->name); 
+}
+
+void freeList(sll *head)
+{
+    sll *temp;
+
+    while (head != NULL)
+    {
+        temp = head;
+
+        head = head->nxt;
+
+        free(temp);
+    }
 }

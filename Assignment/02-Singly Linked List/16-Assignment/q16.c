@@ -18,7 +18,7 @@ typedef struct singly
 
 sll *create(sll *);
 void reverse(sll *);
-
+void freeList(sll *);
 int main()
 {
     sll *head = NULL;
@@ -88,5 +88,19 @@ void reverse(sll *head)
         }
         count--;
         printf("| %d | %s |", p->no, p->name);
+    }
+}
+
+void freeList(sll *head)
+{
+    sll *temp;
+
+    while (head != NULL)
+    {
+        temp = head;
+
+        head = head->nxt;
+
+        free(temp);
     }
 }
